@@ -8,7 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "IdCards")
 public class IdCard {
 
-	@DatabaseField(foreignColumnName = "empId", canBeNull = false, useGetSet = true)
+	@DatabaseField(foreign=true, foreignColumnName = "empId", canBeNull = false, useGetSet = true)
 	private Employee employee;
 	@DatabaseField(canBeNull = false, useGetSet = true)
 	private String employeePhoto;

@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "WorkStations")
 public class WorkStation {
 
-	@DatabaseField(foreignColumnName = "empId", canBeNull = false, useGetSet = true)
+	@DatabaseField(foreign = true, foreignColumnName = "empId", canBeNull = false, useGetSet = true)
 	private Employee employee;
 	@DatabaseField(canBeNull = false, useGetSet = true)
 	private String laptop;
