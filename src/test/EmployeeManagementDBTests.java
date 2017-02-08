@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,6 +33,9 @@ public class EmployeeManagementDBTests {
 		emp.setLastName("Tan");
 		emp.setAddress("Singapore");
 		emp.setAge(28);
+		emp.setDob(new Date("1/1/1989"));
+		emp.setJoinDate(new Date("1/1/2017"));
+		emp.setSalary(10000);
 		
 		int rowCount = dbHelper.insertIntoEmps(emp);
 		
