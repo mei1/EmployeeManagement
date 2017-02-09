@@ -66,7 +66,10 @@ public class EmployeeManagementDBTests {
 	@Test
 	public void testInsertWorkStation() throws SQLException {
 		
+		Employee emp = new Employee();
+		emp.setEmpId(1);
 		WorkStation empWorkStation = new WorkStation();
+		empWorkStation.setEmployee(emp);
 		empWorkStation.setDeskPhoneNumber(1231231);
 		empWorkStation.setFloorNumber(23);
 		empWorkStation.setLaptop("Dell");
