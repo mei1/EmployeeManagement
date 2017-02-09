@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +17,9 @@ import org.qimei.training.pojo.WorkStation;
 
 public class EmployeeManagementDBTests {
 
+	//logger is to print messages to console or file, similar Sysout
+	private static final Logger logger = Logger.getLogger(EmployeeManagementDBTests.class);
+	
 	EmployeeManagementDBManager dbManager = null;
 	EmployeeManagementDBHelper dbHelper = null;
 	
@@ -89,6 +93,7 @@ public class EmployeeManagementDBTests {
 	@Test
 	public void testGetEmpFromDB() throws SQLException {
 		List empDatas = dbHelper.getAllEmpsFromDB();
+		logger.info(empDatas);
 		
 		assert (empDatas.size() > 0);
 	}
@@ -96,6 +101,7 @@ public class EmployeeManagementDBTests {
 	@Test
 	public void testGetIdCardFromDB() throws SQLException {
 		List empIdCardDatas = dbHelper.getAllIdCardFromDB();
+		logger.info(empIdCardDatas);
 		
 		assert (empIdCardDatas.size() > 0);
 	}
@@ -103,6 +109,7 @@ public class EmployeeManagementDBTests {
 	@Test
 	public void testGetWorkStationFromDB() throws SQLException {
 		List empWorkStationDatas = dbHelper.getAllWorkStationFromDB();
+		logger.info(empWorkStationDatas);
 		
 		assert (empWorkStationDatas.size() > 0);
 	}
