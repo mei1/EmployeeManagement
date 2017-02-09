@@ -144,4 +144,15 @@ public class EmployeeManagementDBTests {
 		assert (empWorkStationData != null);
 	}
 	
+	@Test
+	public void testUpdateEmpFromDB() throws SQLException {
+		
+		Employee emp = new Employee();
+		emp.setAddress("Australia");
+		
+		int updateEmp = dbHelper.updateExistingEmp(emp);
+		
+		assert (updateEmp > 0);
+	}
+	
 }
