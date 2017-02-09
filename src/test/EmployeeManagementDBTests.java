@@ -1,7 +1,9 @@
 package test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -79,9 +81,29 @@ public class EmployeeManagementDBTests {
 		empWorkStation.setSeatNumber(234);
 		empWorkStation.setSeatNumber(3);
 		
-		int rowCount = dbHelper.insetIntoWorkStation(empWorkStation);
-		
+		int rowCount = dbHelper.insertIntoWorkStation(empWorkStation);
+	//pass below condition or test will fails	
 		assert (rowCount > 0);
 	}
+	
+	@Test
+	public void testGetEmpFromDB() throws SQLException {
+		List empDatas = dbHelper.getAllEmpsFromDB();
+		
+		assert (empDatas.size() > 0);
+	}
+	
+	@Test
+	public void testGetIdCardFromDB() throws SQLException {
+		List empIdCardDatas = dbHelper.getAllIdCardFromDB();
+		
+		assert (empIdCardDatas.size() > 0);
+	}
 
+	@Test
+	public void testGetWorkStationFromDB() throws SQLException {
+		List empWorkStationDatas = dbHelper.getAllWorkStationFromDB();
+		
+		assert (empWorkStationDatas.size() > 0);
+	}
 }

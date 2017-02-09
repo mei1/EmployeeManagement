@@ -1,6 +1,7 @@
 package org.qimei.training.db;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
@@ -34,7 +35,7 @@ public class EmployeeManagementDBHelper {
 		return rowCount;
 	}
 
-	public int insetIntoWorkStation(WorkStation empWorkStation) throws SQLException {
+	public int insertIntoWorkStation(WorkStation empWorkStation) throws SQLException {
 		int rowCount = EmployeeManagementDBManager.getInstance().getWorkStationDao().create(empWorkStation);
 
 		return rowCount;
@@ -75,6 +76,19 @@ public class EmployeeManagementDBHelper {
 		int rowCount = EmployeeManagementDBManager.getInstance().getWorkStationDao().delete(empWorkStation);
 		
 		return rowCount;
+	}
+	
+	//get data from DB table
+	public List<Employee> getAllEmpsFromDB() throws SQLException {
+		return EmployeeManagementDBManager.getInstance().getEmpDao().queryForAll();
+	}
+	
+	public List<IdCard> getAllIdCardFromDB() throws SQLException{
+		return EmployeeManagementDBManager.getInstance().getIdCardDao().queryForAll();
+	}
+	
+	public List<WorkStation> getAllWorkStationFromDB() throws SQLException {
+		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForAll();
 	}
 
 }
