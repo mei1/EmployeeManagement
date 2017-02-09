@@ -15,6 +15,9 @@ import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class EmployeeManagementDBTests {
 
 	//logger is to print messages to console or file, similar Sysout
@@ -22,6 +25,8 @@ public class EmployeeManagementDBTests {
 	
 	EmployeeManagementDBManager dbManager = null;
 	EmployeeManagementDBHelper dbHelper = null;
+	
+	static ObjectMapper mapper = new ObjectMapper();
 	
 	@Before
 	public void setUp() throws Exception {
@@ -91,25 +96,26 @@ public class EmployeeManagementDBTests {
 	}
 	
 	@Test
-	public void testGetEmpFromDB() throws SQLException {
+	public void testGetEmpFromDB() throws SQLException, JsonProcessingException {
 		List empDatas = dbHelper.getAllEmpsFromDB();
-		logger.info(empDatas);
+		//logger is to print strings and mapper is to convert java objects to JSon strings
+		logger.info(mapper.writeValueAsString(empDatas));
 		
 		assert (empDatas.size() > 0);
 	}
 	
 	@Test
-	public void testGetIdCardFromDB() throws SQLException {
+	public void testGetIdCardFromDB() throws SQLException, JsonProcessingException {
 		List empIdCardDatas = dbHelper.getAllIdCardFromDB();
-		logger.info(empIdCardDatas);
+		logger.info(mapper.writeValueAsString(empIdCardDatas));
 		
 		assert (empIdCardDatas.size() > 0);
 	}
 
 	@Test
-	public void testGetWorkStationFromDB() throws SQLException {
+	public void testGetWorkStationFromDB() throws SQLException, JsonProcessingException {
 		List empWorkStationDatas = dbHelper.getAllWorkStationFromDB();
-		logger.info(empWorkStationDatas);
+		logger.info(mapper.writeValueAsString(empWorkStationDatas));
 		
 		assert (empWorkStationDatas.size() > 0);
 	}
