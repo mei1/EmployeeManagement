@@ -148,7 +148,14 @@ public class EmployeeManagementDBTests {
 	public void testUpdateEmpFromDB() throws SQLException {
 		
 		Employee emp = new Employee();
-		emp.setAddress("Australia");
+		emp.setEmpId(1);
+		emp.setFirstName("Qi Mei");
+		emp.setLastName("Tan");
+		emp.setAddress("Melbourne, Australia");
+		emp.setAge(28);
+		emp.setDob(new Date("1/1/1989"));
+		emp.setJoinDate(new Date("1/1/2017"));
+		emp.setSalary(10000);
 		
 		int updateEmp = dbHelper.updateExistingEmp(emp);
 		
