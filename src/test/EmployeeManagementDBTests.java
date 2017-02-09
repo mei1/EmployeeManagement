@@ -122,7 +122,7 @@ public class EmployeeManagementDBTests {
 	
 	@Test
 	public void testGetEmpFromDBById() throws SQLException, JsonProcessingException{
-		List<Employee> empData = dbHelper.getEmpById(0);
+		List<Employee> empData = dbHelper.getEmpById(1);
 		logger.info(mapper.writeValueAsString(empData));
 		
 		assert (empData != null);
@@ -130,7 +130,7 @@ public class EmployeeManagementDBTests {
 	
 	@Test
 	public void testGetIdCardFromDBById() throws SQLException, JsonProcessingException{
-		List<IdCard> empIdCardData = dbHelper.getIdCardById(0);
+		List<IdCard> empIdCardData = dbHelper.getIdCardById(1);
 		logger.info(mapper.writeValueAsString(empIdCardData));
 		
 		assert (empIdCardData != null);
@@ -138,7 +138,7 @@ public class EmployeeManagementDBTests {
 	
 	@Test
 	public void testGetWorkStationFromDBById() throws SQLException, JsonProcessingException{
-		List<WorkStation> empWorkStationData = dbHelper.getWorkStationById(0);
+		List<WorkStation> empWorkStationData = dbHelper.getWorkStationById(1);
 		logger.info(mapper.writeValueAsString(empWorkStationData));
 		
 		assert (empWorkStationData != null);

@@ -97,11 +97,11 @@ public class EmployeeManagementDBHelper {
 	}
 	
 	public List<IdCard> getIdCardById(int empId) throws SQLException {
-		return EmployeeManagementDBManager.getInstance().getIdCardDao().queryForEq("empId", empId);
+		return EmployeeManagementDBManager.getInstance().getIdCardDao().queryForEq("employee_empId", empId);
 	}
 	
 	public List<WorkStation> getWorkStationById(int empId) throws SQLException {
-		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForEq("empId", empId);
+		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForEq("employee_empId", empId);
 	}
 
 }
