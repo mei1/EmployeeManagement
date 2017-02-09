@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.qimei.training.db.EmployeeManagementDBHelper;
 import org.qimei.training.db.EmployeeManagementDBManager;
 import org.qimei.training.pojo.Employee;
+import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.WorkStation;
 
 public class EmployeeManagementDBTests {
 
@@ -40,6 +42,41 @@ public class EmployeeManagementDBTests {
 		int rowCount = dbHelper.insertIntoEmps(emp);
 		
 		assert(rowCount > 0);
+	}
+	
+	@Test
+	public void testInsertIdCard() throws SQLException {
+		
+		IdCard empIdCard = new IdCard();
+		empIdCard.setCompanyName("Google");
+		//empIdCard.setEmployee(Employee);
+		empIdCard.setEmployeeName("Tan Qi Mei");
+		empIdCard.setEmployeePhoto("Pretty photo");
+		empIdCard.setIssueDate(new Date("1/1/2017"));
+		empIdCard.setNewOrReplace("New");
+		
+		int rowCount = dbHelper.inserIntoIdCard(empIdCard);
+		
+		assert (rowCount > 0);
+		
+	}
+	
+	@Test
+	public void testInsertWorkStation() throws SQLException {
+		
+		WorkStation empWorkStation = new WorkStation();
+		empWorkStation.setDeskPhoneNumber(1231231);
+		empWorkStation.setFloorNumber(23);
+		empWorkStation.setLaptop("Dell");
+		empWorkStation.setLaptopId(12321);
+		empWorkStation.setMouse("Logitech");
+		empWorkStation.setMouseId(12312);
+		empWorkStation.setSeatNumber(234);
+		empWorkStation.setSeatNumber(3);
+		
+		int rowCount = dbHelper.insetIntoWorkStation(empWorkStation);
+		
+		assert (rowCount > 0);
 	}
 
 }
