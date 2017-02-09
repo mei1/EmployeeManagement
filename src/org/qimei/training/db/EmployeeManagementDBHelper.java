@@ -90,5 +90,18 @@ public class EmployeeManagementDBHelper {
 	public List<WorkStation> getAllWorkStationFromDB() throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForAll();
 	}
+	
+	//get data from DB table by matching given ID
+	public Employee getEmpById(int empId) throws SQLException {
+		return EmployeeManagementDBManager.getInstance().getEmpDao().queryForId(empId);
+	}
+	
+	public IdCard getIdCardById(int empId) throws SQLException {
+		return EmployeeManagementDBManager.getInstance().getIdCardDao().queryForId(empId);
+	}
+	
+	public WorkStation getWorkStationById(int empId) throws SQLException {
+		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForId(empId);
+	}
 
 }

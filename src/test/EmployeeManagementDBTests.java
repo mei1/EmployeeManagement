@@ -119,4 +119,29 @@ public class EmployeeManagementDBTests {
 		
 		assert (empWorkStationDatas.size() > 0);
 	}
+	
+	@Test
+	public void testGetEmpFromDBById() throws SQLException, JsonProcessingException{
+		Employee empData = dbHelper.getEmpById(0);
+		logger.info(mapper.writeValueAsString(empData));
+		
+		assert (empData != null);
+	}
+	
+	@Test
+	public void testGetIdCardFromDBById() throws SQLException, JsonProcessingException{
+		IdCard empIdCardData = dbHelper.getIdCardById(0);
+		logger.info(mapper.writeValueAsString(empIdCardData));
+		
+		assert (empIdCardData != null);
+	}
+	
+	@Test
+	public void testGetWorkStationFromDBById() throws SQLException, JsonProcessingException{
+		WorkStation empWorkStationData = dbHelper.getWorkStationById(0);
+		logger.info(mapper.writeValueAsString(empWorkStationData));
+		
+		assert (empWorkStationData != null);
+	}
+	
 }
