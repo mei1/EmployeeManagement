@@ -48,8 +48,10 @@ public class EmployeeManagementDBTests {
 	public void testInsertIdCard() throws SQLException {
 		
 		IdCard empIdCard = new IdCard();
+		Employee emp = new Employee();
+		emp.setEmpId(1);
 		empIdCard.setCompanyName("Google");
-		//empIdCard.setEmployee(Employee);
+		empIdCard.setEmployee(emp);
 		empIdCard.setEmployeeName("Tan Qi Mei");
 		empIdCard.setEmployeePhoto("Pretty photo");
 		empIdCard.setIssueDate(new Date("1/1/2017"));
