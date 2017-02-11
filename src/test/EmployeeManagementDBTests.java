@@ -42,9 +42,9 @@ public class EmployeeManagementDBTests {
 	public void testInsertEmployee() throws SQLException {
 		
 		Employee emp = new Employee();
-		emp.setFirstName("Shan Asshole");
-		emp.setLastName("Stupid");
-		emp.setAddress("India");
+		emp.setFirstName("Shan");
+		emp.setLastName("N");
+		emp.setAddress("Oz");
 		emp.setAge(34);
 		emp.setDob(new Date("1/1/1983"));
 		emp.setJoinDate(new Date("2/1/2017"));
