@@ -42,13 +42,13 @@ public class EmployeeManagementDBTests {
 	public void testInsertEmployee() throws SQLException {
 		
 		Employee emp = new Employee();
-		emp.setFirstName("Qi Mei");
-		emp.setLastName("Tan");
-		emp.setAddress("Singapore");
-		emp.setAge(28);
-		emp.setDob(new Date("1/1/1989"));
-		emp.setJoinDate(new Date("1/1/2017"));
-		emp.setSalary(10000);
+		emp.setFirstName("Shan Asshole");
+		emp.setLastName("Stupid");
+		emp.setAddress("India");
+		emp.setAge(34);
+		emp.setDob(new Date("1/1/1983"));
+		emp.setJoinDate(new Date("2/1/2017"));
+		emp.setSalary(100);
 		
 		int rowCount = dbHelper.insertIntoEmps(emp);
 		
