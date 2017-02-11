@@ -60,13 +60,13 @@ public class EmployeeManagementDBTests {
 		
 		IdCard empIdCard = new IdCard();
 		Employee emp = new Employee();
-		emp.setEmpId(1);
-		empIdCard.setCompanyName("Google");
+		emp.setEmpId(2);
+		empIdCard.setCompanyName("own fucking biz");
 		empIdCard.setEmployee(emp);
-		empIdCard.setEmployeeName("Tan Qi Mei");
-		empIdCard.setEmployeePhoto("Pretty photo");
-		empIdCard.setIssueDate(new Date("1/1/2017"));
-		empIdCard.setNewOrReplace("New");
+		empIdCard.setEmployeeName("Sudarshan N");
+		empIdCard.setEmployeePhoto("Ugly photo");
+		empIdCard.setIssueDate(new Date("2/1/2017"));
+		empIdCard.setNewOrReplace("Old");
 		
 		int rowCount = dbHelper.inserIntoIdCard(empIdCard);
 		
@@ -78,17 +78,16 @@ public class EmployeeManagementDBTests {
 	public void testInsertWorkStation() throws SQLException {
 		
 		Employee emp = new Employee();
-		emp.setEmpId(1);
+		emp.setEmpId(2);
 		WorkStation empWorkStation = new WorkStation();
 		empWorkStation.setEmployee(emp);
-		empWorkStation.setDeskPhoneNumber(1231231);
-		empWorkStation.setFloorNumber(23);
+		empWorkStation.setDeskPhoneNumber(345345345);
+		empWorkStation.setFloorNumber(34);
 		empWorkStation.setLaptop("Dell");
-		empWorkStation.setLaptopId(12321);
-		empWorkStation.setMouse("Logitech");
-		empWorkStation.setMouseId(12312);
-		empWorkStation.setSeatNumber(234);
-		empWorkStation.setSeatNumber(3);
+		empWorkStation.setLaptopId(6753);
+		empWorkStation.setMouse("No Mouse");
+		empWorkStation.setMouseId(5675);
+		empWorkStation.setSeatNumber(434);
 		
 		int rowCount = dbHelper.insertIntoWorkStation(empWorkStation);
 	//pass below condition or test will fails	
