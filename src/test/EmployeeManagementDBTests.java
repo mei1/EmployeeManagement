@@ -169,4 +169,18 @@ public class EmployeeManagementDBTests {
 		assert (updateEmp > 0);
 	}
 	
+	@Test
+	public void testUpdateIdCardFromDBByColumn() throws SQLException{
+		int updateEmpIdCard = dbHelper.updateEmpIdCardById(1, "companyName", "Facebook");
+		
+		assert (updateEmpIdCard > 0);
+	}
+	
+	@Test
+	public void testUpdateWorkStationFromDBByColumn() throws SQLException {
+		int updateEmpWorkStation = dbHelper.updateWorkStationById(1, "laptop", "Mac");
+		
+		assert (updateEmpWorkStation > 0);
+	}
+	
 }

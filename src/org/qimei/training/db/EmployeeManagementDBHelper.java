@@ -62,6 +62,22 @@ public class EmployeeManagementDBHelper {
 		return updateBuilder.update();
 
 	}
+	
+	public int updateEmpIdCardById(int employee_empId, String columnName, Object columnValue) throws SQLException{
+		
+		UpdateBuilder<IdCard, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getIdCardDao().updateBuilder();
+		updateBuilder.updateColumnValue(columnName, columnValue);
+		updateBuilder.where().eq("employee_empId", employee_empId);
+		return updateBuilder.update();
+	}
+	
+	public int updateWorkStationById(int employee_empId, String columnName, Object columnValue) throws SQLException{
+		
+		UpdateBuilder<WorkStation, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getWorkStationDao().updateBuilder();
+		updateBuilder.updateColumnValue(columnName, columnValue);
+		updateBuilder.where().eq("employee_empId", employee_empId);
+		return updateBuilder.update();
+	}
 
 	public int updateExistingIdCard(IdCard empIdCard) throws SQLException {
 		int rowCount = EmployeeManagementDBManager.getInstance().getIdCardDao().update(empIdCard);
