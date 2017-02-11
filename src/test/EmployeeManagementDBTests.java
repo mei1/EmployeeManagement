@@ -163,16 +163,18 @@ public class EmployeeManagementDBTests {
 	
 	@Test
 	public void testUpdateEmpFromDBByColumn() throws SQLException{
-		int updateEmp = dbHelper.updateEmpById(1, "address", "Sydney, Australia");
+		int updateEmp = dbHelper.updateEmpById(2, "address", "Australia");
 		
 		assert (updateEmp > 0);
 	}
 	
 	@Test
 	public void testUpdateIdCardFromDBByColumn() throws SQLException{
-		int updateEmpIdCard = dbHelper.updateEmpIdCardById(1, "companyName", "Facebook");
+		int updateEmpIdCard = dbHelper.updateEmpIdCardById(2, "companyName", "big biz");
+		int updateEmpIdCard2 = dbHelper.updateEmpIdCardById(2, "employeePhoto", "pic");
+
 		
-		assert (updateEmpIdCard > 0);
+		assert (updateEmpIdCard > 0 && updateEmpIdCard2 > 0);
 	}
 	
 	@Test
