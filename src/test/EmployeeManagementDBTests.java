@@ -162,4 +162,11 @@ public class EmployeeManagementDBTests {
 		assert (updateEmp > 0);
 	}
 	
+	@Test
+	public void testUpdateEmpFromDBByColumn() throws SQLException{
+		int updateEmp = dbHelper.updateEmpById(1, "address", "Sydney, Australia");
+		
+		assert (updateEmp > 0);
+	}
+	
 }
