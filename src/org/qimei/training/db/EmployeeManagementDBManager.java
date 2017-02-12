@@ -2,13 +2,21 @@ package org.qimei.training.db;
 
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.db.SqliteDatabaseType;
+import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 public class EmployeeManagementDBManager {
@@ -17,7 +25,7 @@ public class EmployeeManagementDBManager {
 	private static Dao<Employee, Object> empDao;
 	private static Dao<IdCard, Object> idCardDao;
 	private static Dao<WorkStation, Object> workStationDao;
-	private static JdbcConnectionSource connectionSource;
+	private static ConnectionSource connectionSource;
 
 	private EmployeeManagementDBManager() {
 		super();
@@ -26,16 +34,27 @@ public class EmployeeManagementDBManager {
 	public static EmployeeManagementDBManager getInstance() throws SQLException {
 		if (null == dbManager) {
 			dbManager = new EmployeeManagementDBManager();
-			dbManager.connectToDB();
-			dbManager.createDaoObjects();
-			dbManager.createTablesIfNotExist();
 		}
 
 		return dbManager;
 	}
 
-	private void connectToDB() throws SQLException {
-		connectionSource = new JdbcConnectionSource("jdbc:sqlite:EmployeeManagement.db");
+	public void initDbConnection(String jndiString, boolean isJndi) throws SQLException, NamingException {
+
+		if (isJndi) {
+			Context ctx = new InitialContext();
+			DataSource dataSource = (DataSource) ctx.lookup(jndiString);
+			connectionSource = new DataSourceConnectionSource(dataSource, new SqliteDatabaseType());
+		} else {
+			connectionSource = new JdbcConnectionSource(jndiString);
+		}
+		
+		initDaoAndTables();
+	}
+
+	private void initDaoAndTables() throws SQLException {
+		dbManager.createDaoObjects();
+		dbManager.createTablesIfNotExist();
 	}
 
 	private void createDaoObjects() throws SQLException {
