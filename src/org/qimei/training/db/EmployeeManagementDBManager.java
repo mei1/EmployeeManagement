@@ -8,7 +8,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.qimei.training.pojo.Employee;
-import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
@@ -26,7 +25,6 @@ public class EmployeeManagementDBManager {
 	private static Dao<Employee, Object> empDao;
 	private static Dao<IdCard, Object> idCardDao;
 	private static Dao<WorkStation, Object> workStationDao;
-	private static Dao<EmployeeDataSummary, Object> empSummaryDao;
 	private static ConnectionSource connectionSource;
 
 	private EmployeeManagementDBManager() {
@@ -63,7 +61,6 @@ public class EmployeeManagementDBManager {
 		empDao = DaoManager.createDao(connectionSource, Employee.class);
 		idCardDao = DaoManager.createDao(connectionSource, IdCard.class);
 		workStationDao = DaoManager.createDao(connectionSource, WorkStation.class);
-		empSummaryDao = DaoManager.createDao(connectionSource, EmployeeDataSummary.class);
 	}
 
 	private void createTablesIfNotExist() throws SQLException {
@@ -82,10 +79,6 @@ public class EmployeeManagementDBManager {
 
 	public Dao<WorkStation, Object> getWorkStationDao() {
 		return workStationDao;
-	}
-	
-	public Dao<EmployeeDataSummary, Object> getEmpSummaryDao() {
-		return empSummaryDao;
 	}
 
 }
