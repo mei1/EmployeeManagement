@@ -52,6 +52,7 @@ public class EmployeeManagementDBHelper {
 		return rowCount;
 	}
 
+	//update emp/idcard/workstation data by ID
 	public int updateEmpById(int empId, String columnName, Object columnValue) throws SQLException {
 		
 		UpdateBuilder<Employee, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getEmpDao().updateBuilder();
