@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.qimei.training.pojo.Employee;
+import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
@@ -22,6 +23,11 @@ public class EmployeeManagementDBHelper {
 			empMgmtDBHelper = new EmployeeManagementDBHelper();
 		}
 		return empMgmtDBHelper;
+	}
+	
+	//emp summary
+	public List<EmployeeDataSummary> getEmpSummary() throws SQLException{
+		return EmployeeManagementDBManager.getInstance().getEmpSummaryDao().queryForAll();
 	}
 
 	// collect new data for employee/idcard/workstation
