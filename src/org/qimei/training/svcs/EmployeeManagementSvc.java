@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.qimei.training.db.EmployeeManagementDBHelper;
+import org.qimei.training.helpers.EmployeeSummaryHelper;
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
@@ -43,7 +44,7 @@ public class EmployeeManagementSvc {
 	@RequestMapping (value = "allempsummary", method = RequestMethod.GET, produces = "application/json")
 	public List<EmployeeDataSummary> allEmpSummary() throws SQLException{
 		logger.info("All employee summary request");
-		return EmployeeManagementDBHelper.getInstance().getEmpSummary();
+		return EmployeeSummaryHelper.getInstance().getAllEmpSummary();
 	}
 	
 	//service for getting emp/idcard/workstation by id
