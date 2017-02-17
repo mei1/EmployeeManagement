@@ -19,7 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EmployeeManagementDBTests {
 
-	// logger is to print messages to console or file, similar Sysout
+	//Junit to test application 
+	//logger is to print messages to console or file, similar Sysout
 	private static final Logger logger = Logger.getLogger(EmployeeManagementDBTests.class);
 
 	EmployeeManagementDBManager dbManager = null;

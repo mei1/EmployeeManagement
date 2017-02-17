@@ -53,7 +53,7 @@ public class EmployeeManagementDBHelper {
 	}
 
 	//update emp/idcard/workstation data by ID
-	public int updateEmpById(int empId, String columnName, Object columnValue) throws SQLException {
+	public int updateEmpById(long empId, String columnName, Object columnValue) throws SQLException {
 		
 		UpdateBuilder<Employee, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getEmpDao().updateBuilder();
 		//update the given column name with the given column value
@@ -64,7 +64,7 @@ public class EmployeeManagementDBHelper {
 
 	}
 	
-	public int updateEmpIdCardById(int employee_empId, String columnName, Object columnValue) throws SQLException{
+	public int updateEmpIdCardById(long employee_empId, String columnName, Object columnValue) throws SQLException{
 		
 		UpdateBuilder<IdCard, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getIdCardDao().updateBuilder();
 		updateBuilder.updateColumnValue(columnName, columnValue);
@@ -72,11 +72,11 @@ public class EmployeeManagementDBHelper {
 		return updateBuilder.update();
 	}
 	
-	public int updateWorkStationById(int employee_empId, String columnName, Object columnValue) throws SQLException{
+	public int updateWorkStationById(long employee_empID, String columnName, Object columnValue) throws SQLException{
 		
 		UpdateBuilder<WorkStation, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getWorkStationDao().updateBuilder();
 		updateBuilder.updateColumnValue(columnName, columnValue);
-		updateBuilder.where().eq("employee_empId", employee_empId);
+		updateBuilder.where().eq("employee_empId", employee_empID);
 		return updateBuilder.update();
 	}
 

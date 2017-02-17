@@ -10,8 +10,10 @@ import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
+//create helper to assemble all collected data for employee/idcard/workstation
 public class EmployeeSummaryHelper {
 
+	//to create singleton method
 	private static EmployeeSummaryHelper empSumHelper = null;
 	
 	private EmployeeSummaryHelper(){
@@ -30,10 +32,12 @@ public class EmployeeSummaryHelper {
 		List<EmployeeDataSummary> allEmpSummaryList = new ArrayList<EmployeeDataSummary>();
 		EmployeeDataSummary tmpEmpDataSum = null;
 		
+		//get data from DB
 		List<Employee> allEmpList = EmployeeManagementDBHelper.getInstance().getAllEmpsFromDB();
 		List<IdCard> allIdList = EmployeeManagementDBHelper.getInstance().getAllIdCardFromDB();
 		List<WorkStation> allWorkStationList = EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
 		
+		//for loop for all data falls into loop, emp/idcard/workstation
 		for (int i=0; i < allEmpList.size(); i++) {
 			
 			tmpEmpDataSum = new EmployeeDataSummary();
