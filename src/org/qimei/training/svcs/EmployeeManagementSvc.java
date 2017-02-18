@@ -96,7 +96,8 @@ public class EmployeeManagementSvc {
 	@RequestMapping(value = "deleteidcard", method = RequestMethod.DELETE, produces = "application/json")
 	public int deleteIdCard(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Delete idcard request");
-		return EmployeeManagementDBHelper.getInstance().deleteExistingIdCard(userInputs.getIdCard());
+		//collect empid from emp inside userInputs, body request: {"emp":{"empId": 2}}
+		return EmployeeManagementDBHelper.getInstance().deleteExistingIdCard(userInputs.getEmp().getEmpId());
 	}
 
 	@RequestMapping(value = "deleteworkstation", method = RequestMethod.DELETE, produces = "application/json")

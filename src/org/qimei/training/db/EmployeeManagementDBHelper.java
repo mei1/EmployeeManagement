@@ -7,6 +7,7 @@ import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
 import org.qimei.training.pojo.WorkStation;
 
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 
 public class EmployeeManagementDBHelper {
@@ -72,11 +73,11 @@ public class EmployeeManagementDBHelper {
 		return updateBuilder.update();
 	}
 	
-	public int updateWorkStationById(long employee_empID, String columnName, Object columnValue) throws SQLException{
+	public int updateWorkStationById(long employee_empId, String columnName, Object columnValue) throws SQLException{
 		
 		UpdateBuilder<WorkStation, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getWorkStationDao().updateBuilder();
 		updateBuilder.updateColumnValue(columnName, columnValue);
-		updateBuilder.where().eq("employee_empId", employee_empID);
+		updateBuilder.where().eq("employee_empId", employee_empId);
 		return updateBuilder.update();
 	}
 
@@ -99,10 +100,11 @@ public class EmployeeManagementDBHelper {
 		return rowCount;
 	}
 
-	public int deleteExistingIdCard(IdCard empIdCard) throws SQLException {
-		int rowCount = EmployeeManagementDBManager.getInstance().getIdCardDao().delete(empIdCard);
-
-		return rowCount;
+	public int deleteExistingIdCard(long employee_empId) throws SQLException {
+		DeleteBuilder<IdCard, Object> deleteBuilder = EmployeeManagementDBManager.getInstance().getIdCardDao().deleteBuilder();
+		deleteBuilder.where().eq("employee_empId", employee_empId);
+		
+		return deleteBuilder.delete();
 	}
 
 	public int deleteExistingWorkStation(WorkStation empWorkStation) throws SQLException {
