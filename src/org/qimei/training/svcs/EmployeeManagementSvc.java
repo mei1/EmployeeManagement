@@ -23,19 +23,19 @@ public class EmployeeManagementSvc {
 	private static final Logger logger = Logger.getLogger(EmployeeManagementSvc.class);
 
 	// service to collect data into emp/idcard/workstation
-	@RequestMapping(value = "insertempdata", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value = "insertempdata", method = RequestMethod.POST, produces = "application/json")
 	public int insertIntoEmp(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Insert into emp request");
 		return EmployeeManagementDBHelper.getInstance().insertIntoEmps(userInputs.getEmp());
 	}
 
-	@RequestMapping(value = "insertidcarddata", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value = "insertidcarddata", method = RequestMethod.POST, produces = "application/json")
 	public int insertIntoIdCard(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Insert into id card request");
 		return EmployeeManagementDBHelper.getInstance().inserIntoIdCard(userInputs.getIdCard());
 	}
 
-	@RequestMapping(value = "insertworkstationdata", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value = "insertworkstationdata", method = RequestMethod.POST, produces = "application/json")
 	public int insertIntoWorkStation(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Insert into work station request");
 		return EmployeeManagementDBHelper.getInstance().insertIntoWorkStation(userInputs.getWorkStation());
@@ -65,6 +65,12 @@ public class EmployeeManagementSvc {
 	public List<EmployeeDataSummary> allEmpSummary() throws SQLException {
 		logger.info("All employee summary request");
 		return EmployeeSummaryHelper.getInstance().getAllEmpSummary();
+	}
+	
+	@RequestMapping(value = "empsummarybyid", method = RequestMethod.POST, produces = "application/json")
+	public List<EmployeeDataSummary> empSummaryById(@RequestBody Employee empIdObj) throws SQLException{
+		logger.info("All employee summary request by ID - " + empIdObj);
+		return EmployeeSummaryHelper.getInstance().getEmpSummaryById(empIdObj.getEmpId());
 	}
 
 	// service for getting emp/idcard/workstation by id
