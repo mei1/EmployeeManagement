@@ -130,15 +130,15 @@ public class EmployeeManagementDBHelper {
 	}
 
 	// get data from DB table by matching given ID
-	public List<Employee> getEmpById(int empId) throws SQLException {
+	public List<Employee> getEmpById(long empId) throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getEmpDao().queryForEq("empId", empId);
 	}
 
-	public List<IdCard> getIdCardById(int empId) throws SQLException {
+	public List<IdCard> getIdCardById(long empId) throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getIdCardDao().queryForEq("employee_empId", empId);
 	}
 
-	public List<WorkStation> getWorkStationById(int empId) throws SQLException {
+	public List<WorkStation> getWorkStationById(long empId) throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForEq("employee_empId", empId);
 	}
 
