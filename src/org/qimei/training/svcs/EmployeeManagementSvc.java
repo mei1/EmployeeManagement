@@ -22,23 +22,23 @@ public class EmployeeManagementSvc {
 
 	private static final Logger logger = Logger.getLogger(EmployeeManagementSvc.class);
 
-	// service to insert data to emp/idcard/workstation
-	@RequestMapping(value = "insertempdata", method = RequestMethod.POST, produces = "application/json")
-	public List<Employee> insertAllEmp() throws SQLException {
-		logger.info("Insert all emp request");
-		return EmployeeManagementDBHelper.getInstance().getAllEmpsFromDB();
+	// service to collect data into emp/idcard/workstation
+	@RequestMapping(value = "insertempdata", method = RequestMethod.PUT, produces = "application/json")
+	public int insertIntoEmp(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Insert into emp request");
+		return EmployeeManagementDBHelper.getInstance().insertIntoEmps(userInputs.getEmp());
 	}
 
-	@RequestMapping(value = "insertidcarddata", method = RequestMethod.POST, produces = "application/json")
-	public List<IdCard> insertAllIdCard() throws SQLException {
-		logger.info("Insert all id card request");
-		return EmployeeManagementDBHelper.getInstance().getAllIdCardFromDB();
+	@RequestMapping(value = "insertidcarddata", method = RequestMethod.PUT, produces = "application/json")
+	public int insertIntoIdCard(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Insert into id card request");
+		return EmployeeManagementDBHelper.getInstance().inserIntoIdCard(userInputs.getIdCard());
 	}
 
-	@RequestMapping(value = "insertworkstationdata", method = RequestMethod.POST, produces = "application/json")
-	public List<WorkStation> insertAllWorkStation() throws SQLException {
-		logger.info("Insert all emp request");
-		return EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
+	@RequestMapping(value = "insertworkstationdata", method = RequestMethod.PUT, produces = "application/json")
+	public int insertIntoWorkStation(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Insert into work station request");
+		return EmployeeManagementDBHelper.getInstance().insertIntoWorkStation(userInputs.getWorkStation());
 	}
 
 	// service for getting emp/idcard/workstation
@@ -103,7 +103,7 @@ public class EmployeeManagementSvc {
 	@RequestMapping(value = "deleteworkstation", method = RequestMethod.DELETE, produces = "application/json")
 	public int deleteWorkStation(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Delete work station request");
-		return EmployeeManagementDBHelper.getInstance().deleteExistingWorkStation(userInputs.getWorkStation());
+		return EmployeeManagementDBHelper.getInstance().deleteExistingWorkStation(userInputs.getEmp().getEmpId());
 	}
 
 	// service for updating emp/idcard/workstation by id

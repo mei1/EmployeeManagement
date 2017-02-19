@@ -94,10 +94,12 @@ public class EmployeeManagementDBHelper {
 	}
 
 	// delete current data for employee/idcard/workstation
-	public int deleteExistingEmp(Employee emp) throws SQLException {
-		int rowCount = EmployeeManagementDBManager.getInstance().getEmpDao().delete(emp);
+	//using deletebuilder from ORMLite to delete data for the whole column by id
+	public int deleteExistingEmp(Employee empId) throws SQLException {
+		DeleteBuilder<Employee, Object> deleteBuilder = EmployeeManagementDBManager.getInstance().getEmpDao().deleteBuilder();
+		deleteBuilder.where().eq("empId", empId);
 
-		return rowCount;
+		return deleteBuilder.delete();
 	}
 
 	public int deleteExistingIdCard(long employee_empId) throws SQLException {
@@ -107,10 +109,11 @@ public class EmployeeManagementDBHelper {
 		return deleteBuilder.delete();
 	}
 
-	public int deleteExistingWorkStation(WorkStation empWorkStation) throws SQLException {
-		int rowCount = EmployeeManagementDBManager.getInstance().getWorkStationDao().delete(empWorkStation);
-
-		return rowCount;
+	public int deleteExistingWorkStation(long employee_empId) throws SQLException {
+		DeleteBuilder<WorkStation, Object> deleteBuilder = EmployeeManagementDBManager.getInstance().getWorkStationDao().deleteBuilder();
+		deleteBuilder.where().eq("employee_empId", employee_empId);
+		
+		return deleteBuilder.delete();
 	}
 
 	// get data from DB table
