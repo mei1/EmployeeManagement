@@ -10,6 +10,7 @@ import org.qimei.training.helpers.EmployeeSummaryHelper;
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.PerformanceReview;
 import org.qimei.training.pojo.UserInputs;
 import org.qimei.training.pojo.WorkStation;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,12 @@ public class EmployeeManagementSvc {
 		return EmployeeManagementDBHelper.getInstance().insertIntoWorkStation(userInputs.getWorkStation());
 	}
 
+	@RequestMapping(value = "insertperformancereviewdata", method = RequestMethod.POST, produces = "application/json")
+	public int insertIntoPerformanceReview(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Insert into performance review request");
+		return EmployeeManagementDBHelper.getInstance().insertIntoPerformanceReview(userInputs.getPerformanceReview());
+	}
+
 	// service for getting emp/idcard/workstation
 	@RequestMapping(value = "allemp", method = RequestMethod.GET, produces = "application/json")
 	public List<Employee> getAllEmp() throws SQLException {
@@ -60,15 +67,21 @@ public class EmployeeManagementSvc {
 		return EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
 	}
 
+	public List<PerformanceReview> getAllPerformanceReview() throws SQLException {
+		logger.info("All performance review request");
+		return EmployeeManagementDBHelper.getInstance().getAllPerformanceReviewFromDB();
+	}
+
 	// service for emp summary
 	@RequestMapping(value = "allempsummary", method = RequestMethod.GET, produces = "application/json")
 	public List<EmployeeDataSummary> allEmpSummary() throws SQLException {
 		logger.info("All employee summary request");
 		return EmployeeSummaryHelper.getInstance().getAllEmpSummary();
 	}
-	
+
+	// service for emp summary by id
 	@RequestMapping(value = "empsummarybyid", method = RequestMethod.POST, produces = "application/json")
-	public List<EmployeeDataSummary> empSummaryById(@RequestBody Employee empIdObj) throws SQLException{
+	public List<EmployeeDataSummary> empSummaryById(@RequestBody Employee empIdObj) throws SQLException {
 		logger.info("All employee summary request by ID - " + empIdObj);
 		return EmployeeSummaryHelper.getInstance().getEmpSummaryById(empIdObj.getEmpId());
 	}
@@ -92,6 +105,11 @@ public class EmployeeManagementSvc {
 		return EmployeeManagementDBHelper.getInstance().getWorkStationById((int) empIdObj.getEmpId());
 	}
 
+	public List<PerformanceReview> getPerformanceReviewById(@RequestBody Employee empIdObj) throws SQLException {
+		logger.info("All performance review request by ID - " + empIdObj);
+		return EmployeeManagementDBHelper.getInstance().getPerformanceReviewById((int) empIdObj.getEmpId());
+	}
+
 	// service for deleting emp/idcard/workstation
 	@RequestMapping(value = "deleteemp", method = RequestMethod.DELETE, produces = "application/json")
 	public int deleteEmp(@RequestBody UserInputs userInputs) throws SQLException {
@@ -102,7 +120,8 @@ public class EmployeeManagementSvc {
 	@RequestMapping(value = "deleteidcard", method = RequestMethod.DELETE, produces = "application/json")
 	public int deleteIdCard(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Delete idcard request");
-		//collect empid from emp inside userInputs, body request: {"emp":{"empId": 2}}
+		// collect empid from emp inside userInputs, body request:
+		// {"emp":{"empId": 2}}
 		return EmployeeManagementDBHelper.getInstance().deleteExistingIdCard(userInputs.getEmp().getEmpId());
 	}
 
@@ -110,6 +129,12 @@ public class EmployeeManagementSvc {
 	public int deleteWorkStation(@RequestBody UserInputs userInputs) throws SQLException {
 		logger.info("Delete work station request");
 		return EmployeeManagementDBHelper.getInstance().deleteExistingWorkStation(userInputs.getEmp().getEmpId());
+	}
+
+	@RequestMapping(value = "deleteperformancereview", method = RequestMethod.DELETE, produces = "application/json")
+	public int deletePerformanceReview(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Delete performance review request");
+		return EmployeeManagementDBHelper.getInstance().deleteExistingPerformanceReview(userInputs.getEmp().getEmpId());
 	}
 
 	// service for updating emp/idcard/workstation by id
@@ -133,6 +158,14 @@ public class EmployeeManagementSvc {
 		logger.info("Update work station request");
 		return EmployeeManagementDBHelper.getInstance().updateWorkStationById(
 				userInputs.getWorkStation().getEmployee().getEmpId(), userInputs.getColumnName(),
+				userInputs.getColumnValue());
+	}
+
+	@RequestMapping(value = "updateperformancereview", method = RequestMethod.POST, produces = "application/json")
+	public int updatePerformanceReviewById(@RequestBody UserInputs userInputs) throws SQLException {
+		logger.info("Update performance review request");
+		return EmployeeManagementDBHelper.getInstance().updatePerformanceReviewById(
+				userInputs.getPerformanceReview().getEmployee().getEmpId(), userInputs.getColumnName(),
 				userInputs.getColumnValue());
 	}
 }

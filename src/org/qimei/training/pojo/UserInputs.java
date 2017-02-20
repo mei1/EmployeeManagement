@@ -6,6 +6,7 @@ public class UserInputs {
 	Employee emp;
 	IdCard idCard;
 	WorkStation workStation;
+	PerformanceReview performanceReview;
 	String columnName;
 	Object columnValue;
 
@@ -31,6 +32,14 @@ public class UserInputs {
 
 	public void setWorkStation(WorkStation workStation) {
 		this.workStation = workStation;
+	}
+
+	public PerformanceReview getPerformanceReview() {
+		return performanceReview;
+	}
+
+	public void setPerformanceReview(PerformanceReview performanceReview) {
+		this.performanceReview = performanceReview;
 	}
 
 	public String getColumnName() {

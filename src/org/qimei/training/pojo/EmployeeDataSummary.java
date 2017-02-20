@@ -6,6 +6,7 @@ public class EmployeeDataSummary {
 	private Employee emp;
 	private IdCard empIdCard;
 	private WorkStation empWorkStation;
+	private PerformanceReview empPerformanceReview;
 
 	public Employee getEmp() {
 		return emp;
@@ -29,6 +30,14 @@ public class EmployeeDataSummary {
 
 	public void setEmpWorkStation(WorkStation empWorkStation) {
 		this.empWorkStation = empWorkStation;
+	}
+
+	public PerformanceReview getEmpPerformanceReview() {
+		return empPerformanceReview;
+	}
+
+	public void setEmpPerformanceReview(PerformanceReview empPerformanceReview) {
+		this.empPerformanceReview = empPerformanceReview;
 	}
 
 }

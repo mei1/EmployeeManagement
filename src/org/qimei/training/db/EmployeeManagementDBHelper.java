@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.PerformanceReview;
 import org.qimei.training.pojo.WorkStation;
 
 import com.j256.ormlite.stmt.DeleteBuilder;
@@ -41,6 +42,12 @@ public class EmployeeManagementDBHelper {
 	public int insertIntoWorkStation(WorkStation empWorkStation) throws SQLException {
 		int rowCount = EmployeeManagementDBManager.getInstance().getWorkStationDao().create(empWorkStation);
 
+		return rowCount;
+	}
+	
+	public int insertIntoPerformanceReview(PerformanceReview empPerformanceReview) throws SQLException{
+		int rowCount = EmployeeManagementDBManager.getInstance().getPerformanceReviewDao().create(empPerformanceReview);
+		
 		return rowCount;
 	}
 
@@ -80,7 +87,16 @@ public class EmployeeManagementDBHelper {
 		updateBuilder.where().eq("employee_empId", employee_empId);
 		return updateBuilder.update();
 	}
+	
+	public int updatePerformanceReviewById(long employee_empId, String columnName, Object columnValue) throws SQLException{
+		UpdateBuilder<PerformanceReview, Object> updateBuilder = EmployeeManagementDBManager.getInstance().getPerformanceReviewDao().updateBuilder();
+		updateBuilder.updateColumnValue(columnName, columnValue);
+		updateBuilder.where().eq("employee_empId", employee_empId);
+		return updateBuilder.update();
+	}
+	//update emp/idcard/workstation data by ID
 
+	
 	public int updateExistingIdCard(IdCard empIdCard) throws SQLException {
 		int rowCount = EmployeeManagementDBManager.getInstance().getIdCardDao().update(empIdCard);
 
@@ -115,6 +131,13 @@ public class EmployeeManagementDBHelper {
 		
 		return deleteBuilder.delete();
 	}
+	
+	public int deleteExistingPerformanceReview(long employee_empId) throws SQLException{
+		DeleteBuilder<PerformanceReview, Object> deleteBuilder = EmployeeManagementDBManager.getInstance().getPerformanceReviewDao().deleteBuilder();
+		deleteBuilder.where().eq("employee_empId", employee_empId);
+		
+		return deleteBuilder.delete();
+	}
 
 	// get data from DB table
 	public List<Employee> getAllEmpsFromDB() throws SQLException {
@@ -128,6 +151,10 @@ public class EmployeeManagementDBHelper {
 	public List<WorkStation> getAllWorkStationFromDB() throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForAll();
 	}
+	
+	public List<PerformanceReview> getAllPerformanceReviewFromDB() throws SQLException{
+		return EmployeeManagementDBManager.getInstance().getPerformanceReviewDao().queryForAll();
+	}
 
 	// get data from DB table by matching given ID
 	public List<Employee> getEmpById(long empId) throws SQLException {
@@ -140,6 +167,10 @@ public class EmployeeManagementDBHelper {
 
 	public List<WorkStation> getWorkStationById(long empId) throws SQLException {
 		return EmployeeManagementDBManager.getInstance().getWorkStationDao().queryForEq("employee_empId", empId);
+	}
+	
+	public List<PerformanceReview> getPerformanceReviewById(long empId) throws SQLException{
+		return EmployeeManagementDBManager.getInstance().getPerformanceReviewDao().queryForEq("employee_empId", empId);
 	}
 
 }

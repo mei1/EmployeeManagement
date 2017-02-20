@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.PerformanceReview;
 import org.qimei.training.pojo.WorkStation;
 
 import com.j256.ormlite.dao.Dao;
@@ -25,6 +26,7 @@ public class EmployeeManagementDBManager {
 	private static Dao<Employee, Object> empDao;
 	private static Dao<IdCard, Object> idCardDao;
 	private static Dao<WorkStation, Object> workStationDao;
+	private static Dao<PerformanceReview, Object> performanceReviewDao;
 	private static ConnectionSource connectionSource;
 
 	private EmployeeManagementDBManager() {
@@ -61,12 +63,14 @@ public class EmployeeManagementDBManager {
 		empDao = DaoManager.createDao(connectionSource, Employee.class);
 		idCardDao = DaoManager.createDao(connectionSource, IdCard.class);
 		workStationDao = DaoManager.createDao(connectionSource, WorkStation.class);
+		performanceReviewDao = DaoManager.createDao(connectionSource, PerformanceReview.class);
 	}
 
 	private void createTablesIfNotExist() throws SQLException {
 		TableUtils.createTableIfNotExists(connectionSource, Employee.class);
 		TableUtils.createTableIfNotExists(connectionSource, IdCard.class);
 		TableUtils.createTableIfNotExists(connectionSource, WorkStation.class);
+		TableUtils.createTableIfNotExists(connectionSource, PerformanceReview.class);
 	}
 
 	public Dao<Employee, Object> getEmpDao() {
@@ -79,6 +83,10 @@ public class EmployeeManagementDBManager {
 
 	public Dao<WorkStation, Object> getWorkStationDao() {
 		return workStationDao;
+	}
+	
+	public Dao<PerformanceReview, Object> getPerformanceReviewDao() {
+		return performanceReviewDao;
 	}
 
 }

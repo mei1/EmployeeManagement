@@ -9,6 +9,7 @@ import org.qimei.training.db.EmployeeManagementDBManager;
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.EmployeeDataSummary;
 import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.PerformanceReview;
 import org.qimei.training.pojo.WorkStation;
 
 //create helper to assemble all collected data for employee/idcard/workstation
@@ -37,6 +38,7 @@ public class EmployeeSummaryHelper {
 		List<Employee> allEmpList = EmployeeManagementDBHelper.getInstance().getAllEmpsFromDB();
 		List<IdCard> allIdList = EmployeeManagementDBHelper.getInstance().getAllIdCardFromDB();
 		List<WorkStation> allWorkStationList = EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
+		List<PerformanceReview> allPerformanceReviewList = EmployeeManagementDBHelper.getInstance().getAllPerformanceReviewFromDB();
 
 		// for loop for all data falls into loop, emp/idcard/workstation
 		for (int i = 0; i < allEmpList.size(); i++) {
@@ -45,6 +47,7 @@ public class EmployeeSummaryHelper {
 			tmpEmpDataSum.setEmp(allEmpList.get(i));
 			tmpEmpDataSum.setEmpIdCard(allIdList.get(i));
 			tmpEmpDataSum.setEmpWorkStation(allWorkStationList.get(i));
+			tmpEmpDataSum.setEmpPerformanceReview(allPerformanceReviewList.get(i));
 
 			allEmpSummaryList.add(tmpEmpDataSum);
 		}
@@ -60,6 +63,7 @@ public class EmployeeSummaryHelper {
 		List<Employee> empListById = EmployeeManagementDBHelper.getInstance().getEmpById(empId);
 		List<IdCard> idListById = EmployeeManagementDBHelper.getInstance().getIdCardById(empId);
 		List<WorkStation> workStationListById = EmployeeManagementDBHelper.getInstance().getWorkStationById(empId);
+		List<PerformanceReview> performanceReviewListById = EmployeeManagementDBHelper.getInstance().getPerformanceReviewById(empId);
 
 		for (int i = 0; i < empListById.size(); i++) {
 
@@ -67,6 +71,7 @@ public class EmployeeSummaryHelper {
 			tmpEmpDataSum.setEmp(empListById.get(i));
 			tmpEmpDataSum.setEmpIdCard(idListById.get(i));
 			tmpEmpDataSum.setEmpWorkStation(workStationListById.get(i));
+			tmpEmpDataSum.setEmpPerformanceReview(performanceReviewListById.get(i));
 
 			empSummaryListById.add(tmpEmpDataSum);
 		}

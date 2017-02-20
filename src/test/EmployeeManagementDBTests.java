@@ -12,6 +12,7 @@ import org.qimei.training.db.EmployeeManagementDBHelper;
 import org.qimei.training.db.EmployeeManagementDBManager;
 import org.qimei.training.pojo.Employee;
 import org.qimei.training.pojo.IdCard;
+import org.qimei.training.pojo.PerformanceReview;
 import org.qimei.training.pojo.WorkStation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -92,6 +93,23 @@ public class EmployeeManagementDBTests {
 
 		int rowCount = dbHelper.insertIntoWorkStation(empWorkStation);
 		// pass below condition or test will fails
+		assert (rowCount > 0);
+	}
+	
+	@Test
+	public void testInsertPerformanceReview() throws SQLException{
+		Employee emp = new Employee();
+		emp.setEmpId(1);
+		PerformanceReview empPerformanceReview = new PerformanceReview();
+		empPerformanceReview.setEmployee(emp);
+		empPerformanceReview.setPunctuality(75);
+		empPerformanceReview.setWorkQuality(65);
+		empPerformanceReview.setWorkSkills(70);
+		empPerformanceReview.setOverallScore(empPerformanceReview.getOverallScore());
+		empPerformanceReview.setComment("worker with good performance, keep it up!");
+		
+		int rowCount = dbHelper.insertIntoPerformanceReview(empPerformanceReview);
+		
 		assert (rowCount > 0);
 	}
 
