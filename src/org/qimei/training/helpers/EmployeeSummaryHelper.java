@@ -38,7 +38,8 @@ public class EmployeeSummaryHelper {
 		List<Employee> allEmpList = EmployeeManagementDBHelper.getInstance().getAllEmpsFromDB();
 		List<IdCard> allIdList = EmployeeManagementDBHelper.getInstance().getAllIdCardFromDB();
 		List<WorkStation> allWorkStationList = EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
-		List<PerformanceReview> allPerformanceReviewList = EmployeeManagementDBHelper.getInstance().getAllPerformanceReviewFromDB();
+		List<PerformanceReview> allPerformanceReviewList = EmployeeManagementDBHelper.getInstance()
+				.getAllPerformanceReviewFromDB();
 
 		// for loop for all data falls into loop, emp/idcard/workstation
 		for (int i = 0; i < allEmpList.size(); i++) {
@@ -63,7 +64,8 @@ public class EmployeeSummaryHelper {
 		List<Employee> empListById = EmployeeManagementDBHelper.getInstance().getEmpById(empId);
 		List<IdCard> idListById = EmployeeManagementDBHelper.getInstance().getIdCardById(empId);
 		List<WorkStation> workStationListById = EmployeeManagementDBHelper.getInstance().getWorkStationById(empId);
-		List<PerformanceReview> performanceReviewListById = EmployeeManagementDBHelper.getInstance().getPerformanceReviewById(empId);
+		List<PerformanceReview> performanceReviewListById = EmployeeManagementDBHelper.getInstance()
+				.getPerformanceReviewById(empId);
 
 		for (int i = 0; i < empListById.size(); i++) {
 
