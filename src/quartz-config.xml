@@ -1,0 +1,29 @@
+<job-scheduling-data
+	xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData 
+	http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+	version="1.8">
+
+	<schedule>
+
+		<job>
+			<name>EmpMgmtReaderJob</name>
+			<group>EmpMgmtReaderJobGrp</group>
+			<description>EmpMgmtReaderJob</description>
+			<job-class>org.qimei.training.jobs.EmpMgmtReaderJob</job-class>
+		</job>
+		<trigger>
+			<cron>
+				<name>EmpMgmtReaderJobTrigger</name>
+				<group>EmpMgmtReaderJobTriggerGrp</group>
+				<description>EmpMgmtReaderJobTrigger</description>
+				<job-name>EmpMgmtReaderJob</job-name>
+				<job-group>EmpMgmtReaderJobGrp</job-group>
+				<cron-expression>0 0/1 * 1/1 * ? *</cron-expression>
+				<time-zone></time-zone>
+			</cron>
+		</trigger>
+
+	</schedule>
+</job-scheduling-data>

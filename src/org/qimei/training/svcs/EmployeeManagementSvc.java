@@ -67,6 +67,7 @@ public class EmployeeManagementSvc {
 		return EmployeeManagementDBHelper.getInstance().getAllWorkStationFromDB();
 	}
 
+	@RequestMapping(value = "allperformancereview", method = RequestMethod.GET, produces = "application/json")
 	public List<PerformanceReview> getAllPerformanceReview() throws SQLException {
 		logger.info("All performance review request");
 		return EmployeeManagementDBHelper.getInstance().getAllPerformanceReviewFromDB();
