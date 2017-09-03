@@ -1,6 +1,6 @@
 # EmployeeManagement
 
-My first java development project.
+My first java development project, updated with all my learnings as I learn more.
 
 This is an employee management application for:
 1. Adding and editing employee details
